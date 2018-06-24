@@ -26,7 +26,8 @@ func (b Box) Volume() float64 {
 
 // 設置顏色
 func (b *Box) SetColor(c Color) {
-	b.color = c
+	b.color = c // go 自動優化
+	//(*b).color = c // 不推薦
 }
 
 // 顏色
@@ -45,7 +46,9 @@ func (bl BoxList) BiggestColor() Color {
 
 func (bl BoxList) PaintItBlack() {
 	for i := range bl {
-		bl[i].SetColor(BLACK)
+		// 注: 如果一个method的receiver是*T,你可以在一个T类型的实例变量V上面调用这个method，而不需要&V去调用这个method
+		//(&bl[i]).SetColor(BLACK) 不推薦
+		bl[i].SetColor(BLACK) // go自動按地址傳遞 Go知道receiver是指针，他自动帮你转了
 	}
 }
 
