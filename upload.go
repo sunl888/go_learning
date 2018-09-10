@@ -45,6 +45,11 @@ func upload(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(err)
 			return
 		}
+		// 打印 form-data
+		for k, v := range r.Form {
+			fmt.Println("key:", k)
+			fmt.Println("value:", v)
+		}
 		defer file.Close()
 		fmt.Fprintf(w, "%v", handler.Header)
 		f, err := os.OpenFile("./storage/"+handler.Filename, os.O_WRONLY|os.O_CREATE, 0666) // 此处假设当前目录下已存在test目录
