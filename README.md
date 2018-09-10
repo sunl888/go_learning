@@ -1,2 +1,2 @@
 # go_learning
-go 語言學習
+golang 语言学习
