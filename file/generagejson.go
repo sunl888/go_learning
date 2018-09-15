@@ -19,6 +19,7 @@ type Serverslice struct {
 //tag中带有自定义名称，那么这个自定义名称会出现在JSON的字段名中，例如上面例子中serverName
 //tag中如果带有"omitempty"选项，那么如果该字段值为空，就不会输出到JSON串中
 //如果字段类型是bool, string, int, int64等，而tag中带有",string"选项，那么这个字段在输出到JSON的时候会把该字段对应的值转换成JSON字符串
+
 type Server struct {
 	ServerName string `json:"serverName"`
 	ServerIP   string `json:"serverIP"`
