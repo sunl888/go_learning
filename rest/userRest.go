@@ -8,7 +8,9 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprint(w, "Welcome!\n")
+	r.ParseForm()
+	fmt.Println(r.Form)
+	fmt.Fprint(w, "Welcome, "+r.Form.Get("name"))
 }
 func Show(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	userId := ps.ByName("user_id")
